@@ -1,15 +1,9 @@
-
 export const dbModels = {
-    recipes: {
-        tableName: 'recipes',
-        length: {
-            ingredients: 512,
-            makingProcedure: 1024
-        }
+    users: {
+        tableName: 'users'
     },
-
-    matchingRecipes: {
-        tableName: 'matching_recipes',
-
+    tableReservations: {
+        tableName: 'table_reservations'
     }
 }
+
