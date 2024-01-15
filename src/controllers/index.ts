@@ -1,5 +1,6 @@
-import { dashCtl } from "./dashboard"
+import { authCtl } from "./auth"
+
 
 export {
-    dashCtl
+    authCtl
 }

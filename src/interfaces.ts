@@ -51,3 +51,12 @@ export interface ICreateServerInstanceParams {
     port: number;
     swaggerURI?: string;
 }
+
+// odavde je novo
+
+export interface IRegister {
+    firstname: string;
+    lastname: string;
+    password: string;
+    isModerator: boolean;
+}

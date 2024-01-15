@@ -8,6 +8,7 @@ export class TableReservations extends Model {
     bottle: string | null;
     phone: string | null;
     referrer: string | null;
+    number_of_people: number | null;
 
     created_at: string;
     updated_at: string;
@@ -27,6 +28,7 @@ export class TableReservations extends Model {
                 bottle: { type: ['string', 'null'] },
                 phone: { type: ['string', 'null'] },
                 referrer: { type: ['string', 'null'] },
+                number_of_people: { type: ['integer', 'null'] },
 
                 created_at: { type: 'string' },
                 updated_at: { type: 'string' }

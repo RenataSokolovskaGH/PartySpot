@@ -23,10 +23,10 @@ const routes = {
     root: '/',
     apiRoute,
     swaggerURI: '/__swagger',
-    dashboard: {
-        getRecipes: `${apiRoute}/dashboard/get-recipes`,
-        getRecipeDetails: `${apiRoute}/dashboard/get-recipe-details`
+    auth: {
+        register: "/auth/register"
     }
+
 };
 
 export const routeConstants = {

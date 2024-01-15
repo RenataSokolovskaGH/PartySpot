@@ -20,9 +20,9 @@ export const errorCodes = {
         message: "Problem with processing current operation",
         code: 'e_8',
     },
-    InvalidRecipe: {
-        title: "Invalid Recipe",
-        message: "Certain recipe could not be found on the system",
+    WrongPassword: {
+        title: "Invalid Password",
+        message: "Your password must contain at least 8 characters, capital letter, small letter, number, special character.",
         code: 'e_9',
     }
 }

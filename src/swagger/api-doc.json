@@ -1,7 +1,7 @@
 {
    "openapi": "3.0.0",
    "info": {
-      "title": "My Ideal Recipe",
+      "title": "Party Spot",
       "contact": {
          "name": "Renata Sokolovska"
       },
@@ -22,18 +22,18 @@
       }
    ],
    "paths": {
-      "/api/dashboard/get-recipes": {
+      "/auth/register": {
          "post": {
             "tags": [
-               "Dashboard"
+               "Auth"
             ],
-            "summary": "Get recipes that match the prescribed conditions",
-            "operationId": "getRecipes",
+            "summary": "Register new user or new moderator",
+            "operationId": "register",
             "requestBody": {
                "content": {
                   "application/json": {
                      "schema": {
-                        "$ref": "#/components/schemas/GetRecipesRequest"
+                        "$ref": "#/components/schemas/RegisterRequest"
                      }
                   }
                }
@@ -44,7 +44,7 @@
                   "content": {
                      "application/json": {
                         "schema": {
-                           "$ref": "#/components/schemas/GetRecipesResponse"
+                           "$ref": "#/components/schemas/RegisterResponse"
                         }
                      }
                   }
@@ -117,6 +117,41 @@
                },
                "code": {
                   "type": "number"
+               }
+            }
+         },
+         "RegisterRequest": {
+            "type": "object",
+            "properties": {
+               "firstname": {
+                  "type": "string",
+                  "example": "Teona"
+               },
+               "lastname": {
+                  "type": "string",
+                  "example": "Maksimovska"
+               },
+               "password": {
+                  "type": "string",
+                  "format": "password"
+               },
+               "isModerator": {
+                  "type": "boolean",
+                  "default": false
+               }
+            }
+         },
+         "RegisterResponse": {
+            "type": "object",
+            "properties": {
+               "userId": {
+                  "type": "number",
+                  "format": "integer",
+                  "example": 2
+               },
+               "username": {
+                  "type": "string",
+                  "example": "teonamaksimovska"
                }
             }
          },

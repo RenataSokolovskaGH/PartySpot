@@ -18,6 +18,7 @@ exports.up = async (knex: Knex) => {
                 t.string('bottle').index();
                 t.string('phone');
                 t.string('referrer').index();
+                t.integer('number_of_people').unsigned().index();
 
                 t.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
                 t.timestamp('updated_at').notNullable().defaultTo(updateStamp);
