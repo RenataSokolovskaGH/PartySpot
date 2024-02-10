@@ -24,9 +24,9 @@ const routes = {
     apiRoute,
     swaggerURI: '/__swagger',
     auth: {
-        register: "/auth/register"
+        register: "/auth/register",
+        login: "/auth/login"
     }
-
 };
 
 export const routeConstants = {

@@ -4,6 +4,9 @@ export const dbModels = {
     },
     tableReservations: {
         tableName: 'table_reservations'
+    },
+    userSessions: {
+        tableName: 'user_sessions'
     }
 }
 

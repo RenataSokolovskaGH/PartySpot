@@ -41,6 +41,41 @@ export default {
         } catch (err) {
             next(err);
         }
+    },
+
+    login: async (
+        req: Request,
+        res: Response,
+        next: NextFunction
+
+    ) => {
+        try {
+            const {
+                username,
+                password
+            } = req.body;
+
+
+
+            if (!validateString(username)) {
+                return next(errorCodes.WrongParameters)
+            }
+
+            if (!validatePassword(password)) {
+                return next(errorCodes.WrongParameters)
+            }
+
+            const result = await authCtl.login(
+                {
+                    username,
+                    password
+                }
+            )
+            res.status(200).json(result);
+
+        } catch (err) {
+            next(err);
+        }
     }
 
 

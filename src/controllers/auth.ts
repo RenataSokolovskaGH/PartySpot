@@ -1,9 +1,11 @@
 import { random } from "lodash";
 import { errorCodes } from "../error-codes";
-import { IRegister, IUserLimitCounter, RRegister } from "../interfaces";
-import { Users } from "../models";
+import { ILogin, IRegister, IUserLimitCounter, RLogin, RRegister } from "../interfaces";
+import { UserSessions, Users } from "../models";
+import { randomBytes } from "crypto";
 
 class AuthCtl {
+    private readonly _authTokenLength = 100;
 
     private async _generateUsername(firstname: string, lastname: string, counter?: IUserLimitCounter): Promise<string | null> {
         if (!counter) {
@@ -42,7 +44,7 @@ class AuthCtl {
             is_moderator: data.isModerator,
             password: data.password
         })
-        
+
         return {
             username,
             userId: newUser.id
@@ -54,6 +56,51 @@ class AuthCtl {
     ): Promise<boolean> {
         return !!await Users.query().findOne({ username })
     }
+
+    //od ovdeka pocnuva login
+    private async _getUser(
+        username: string
+    ): Promise<Users | undefined> {
+        return await Users.query().findOne({ username })
+    }
+
+    public async login(data: ILogin): Promise<RLogin> {
+        const validUser = await this._getUser(data.username)
+
+        if (
+            !validUser ||
+            validUser.password !== data.password
+        ) {
+            throw errorCodes.InvalidCredentials;
+        }
+
+        const authToken = await this._generateAuthToken(this._authTokenLength)
+        await UserSessions.query().insert(
+            {
+                user_id: validUser.id,
+                auth_token: authToken
+            }
+        )
+
+        return {
+            authToken
+        }
+    }
+
+    private async _isAuthTokenUnique(authToken: string): Promise<boolean> {
+        return !await UserSessions.query().findOne({ auth_token: authToken })
+    }
+
+    private async _generateAuthToken(length: number): Promise<string> {
+        let authToken = randomBytes(length).toString('base64url').substring(0, length)
+
+        if (!await this._isAuthTokenUnique(authToken)) {
+            authToken = await this._generateAuthToken(length)
+        }
+
+        return authToken;
+    }
+
 }
 
 const authCtl = new AuthCtl();

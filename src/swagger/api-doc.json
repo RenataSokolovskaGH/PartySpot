@@ -61,6 +61,46 @@
                }
             }
          }
+      },
+      "/auth/login": {
+         "post": {
+            "tags": [
+               "Auth"
+            ],
+            "summary": "Login existing user",
+            "operationId": "login",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/LoginRequest"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/LoginResponse"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Bad request",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/APIErrorResponse"
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    },
    "components": {
@@ -112,6 +152,28 @@
                "username": {
                   "type": "string",
                   "example": "teonamaksimovska"
+               }
+            }
+         },
+         "LoginRequest": {
+            "type": "object",
+            "properties": {
+               "username": {
+                  "type": "string",
+                  "example": "teonamaksimovska12"
+               },
+               "password": {
+                  "type": "string",
+                  "format": "password"
+               }
+            }
+         },
+         "LoginResponse": {
+            "type": "object",
+            "properties": {
+               "authToken": {
+                  "type": "string",
+                  "example": "..token"
                }
             }
          }

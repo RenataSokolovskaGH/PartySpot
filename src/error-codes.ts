@@ -29,5 +29,10 @@ export const errorCodes = {
         title: "Unable to Generate Username",
         message: "Username threshold has been exceeded",
         code: 'e_10',
+    },
+    InvalidCredentials: {
+        title: "Wrong Credentials",
+        message: "Username or Password is not correct",
+        code: 'e_11',   
     }
 }

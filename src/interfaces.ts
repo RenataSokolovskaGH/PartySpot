@@ -43,3 +43,12 @@ export interface IUserLimitCounter {
     limit: number;
     used: number;
 }
+
+export interface ILogin {
+    username: string;
+    password: string;
+}
+
+export interface RLogin {
+    authToken: string;
+}

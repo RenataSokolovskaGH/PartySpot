@@ -18,7 +18,9 @@ serverHelper.initializeSwaggerModule(
 // Health check
 router.get(routeConstants.routes.root, (req, res) => res.send(errorCodes.Success));
 
-router.post(routeConstants.routes.auth.register, auth.register );
+router.post(routeConstants.routes.auth.register, auth.register);
+
+router.post(routeConstants.routes.auth.login, auth.login);
 
 export {
     router
