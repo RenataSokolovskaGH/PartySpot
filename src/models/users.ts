@@ -8,6 +8,7 @@ export class Users extends Model {
     last_name: string;
     username: string;
     is_moderator: boolean;
+    password: string;
 
     created_at: string;
     updated_at: string;
@@ -26,6 +27,7 @@ export class Users extends Model {
                 last_name: { type: 'string' },
                 username: { type: 'string' },
                 is_moderator: { type: 'boolean' },
+                password: { type: 'string' },
 
 
                 created_at: { type: 'string' },

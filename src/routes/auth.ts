@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { authCtl } from "../controllers";
-import { validateBoolean, validatePassword, validateString } from "src/helpers/validator";
-import { errorCodes } from "src/error-codes";
+import { validateBoolean, validatePassword, validateString } from "../helpers/validator";
+import { errorCodes } from "../error-codes";
 
 export default {
     register: async (

@@ -24,5 +24,10 @@ export const errorCodes = {
         title: "Invalid Password",
         message: "Your password must contain at least 8 characters, capital letter, small letter, number, special character.",
         code: 'e_9',
+    },
+    EnableToGenerateUsername: {
+        title: "Unable to Generate Username",
+        message: "Username threshold has been exceeded",
+        code: 'e_10',
     }
 }

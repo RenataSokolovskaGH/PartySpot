@@ -17,6 +17,7 @@ exports.up = async (knex: Knex) => {
                 t.string('last_name').notNullable().index();
                 t.string('username').notNullable().index();
                 t.boolean('is_moderator').notNullable().index().defaultTo(false);
+                t.string('password').notNullable();
 
                 t.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
                 t.timestamp('updated_at').notNullable().defaultTo(updateStamp);
