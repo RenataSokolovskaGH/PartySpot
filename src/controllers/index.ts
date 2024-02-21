@@ -1,6 +1,2 @@
-import { authCtl } from "./auth"
-
-
-export {
-    authCtl
-}
+export { authCtl } from "./auth"
+export { homeCtl } from "./home"

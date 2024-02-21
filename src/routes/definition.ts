@@ -26,10 +26,14 @@ const routes = {
     auth: {
         register: "/auth/register",
         login: "/auth/login"
+    },
+    home: {
+        root: '/home/*',
+        getProfile: "/home/get-profile"
     }
 };
 
-export const routeConstants = {
+export {
     routes,
     getAllRoutes
 }

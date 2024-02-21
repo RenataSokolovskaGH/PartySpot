@@ -34,5 +34,10 @@ export const errorCodes = {
         title: "Wrong Credentials",
         message: "Username or Password is not correct",
         code: 'e_11',   
+    },
+    AccessDenied:{
+        title: "Access Denied!",
+        message: "Your access has been denied!",
+        code: 'e_12',   
     }
 }

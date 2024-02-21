@@ -52,3 +52,9 @@ export interface ILogin {
 export interface RLogin {
     authToken: string;
 }
+
+export interface RGetProfile {
+    firstname: string;
+    lastname: string;
+    username: string;
+}

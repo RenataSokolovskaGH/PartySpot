@@ -101,6 +101,42 @@
                }
             }
          }
+      },
+      "/home/get-profile": {
+         "get": {
+            "tags": [
+               "Home"
+            ],
+            "summary": "Get user profile",
+            "operationId": "getProfile",
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/GetProfileResponse"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Bad request",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/APIErrorResponse"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "AUTH_TOKEN": []
+               }
+            ]
+         }
       }
    },
    "components": {
@@ -176,8 +212,38 @@
                   "example": "..token"
                }
             }
+         },
+         "GetProfileResponse": {
+            "type": "object",
+            "properties": {
+               "firstname": {
+                  "type": "string",
+                  "example": "teona"
+               },
+               "lastname": {
+                  "type": "string",
+                  "example": "maksimovska"
+               },
+               "username": {
+                  "type": "string",
+                  "example": "teonamaksimovska"
+               }
+            }
          }
       },
+      "securitySchemes": {
+         "AUTH_TOKEN": {
+            "description": "user access token",
+            "type": "apiKey",
+            "name": "auth-token",
+            "in": "header"
+         }
+      },
+      "security": [
+         {
+            "AUTH_TOKEN": []
+         }
+      ],
       "tags": [
          {
             "name": "Dashboard",

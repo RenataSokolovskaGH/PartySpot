@@ -1,5 +1,6 @@
 import { JSONSchema, Model, RelationMappings } from 'objection';
 import { dbModels } from '../db/db-models';
+import { RGetProfile } from '../interfaces';
 // import { IUserEmailSchema, IUserSchema } from 'src/interfaces';
 
 export class Users extends Model {
@@ -34,6 +35,14 @@ export class Users extends Model {
                 updated_at: { type: 'string' }
             }
         };
+    }
+
+    public userProfile(): RGetProfile {
+        return {
+            firstname: this.first_name,
+            lastname: this.last_name,
+            username: this.username
+        }
     }
 
 

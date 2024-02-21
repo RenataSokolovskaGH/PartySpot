@@ -64,6 +64,12 @@ class AuthCtl {
         return await Users.query().findOne({ username })
     }
 
+    public async getUserById(
+        userId: number
+    ): Promise<Users | undefined> {
+        return await Users.query().findOne({ id: userId })
+    }
+
     public async login(data: ILogin): Promise<RLogin> {
         const validUser = await this._getUser(data.username)
 

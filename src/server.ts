@@ -2,12 +2,12 @@ import express from 'express';
 import { router } from './routes';
 import knex from './db/knex';
 import { serverHelper } from './helpers';
-import { routeConstants } from './routes/definition';
+import { getAllRoutes, routes } from './routes/definition';
 import { logger } from './helpers/logger';
 
-const allRoutes = routeConstants.getAllRoutes(
+const allRoutes = getAllRoutes(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    routeConstants.routes as Record<string, any>
+    routes as Record<string, any>
 );
 
 export const bootstrap = async (
@@ -21,7 +21,7 @@ export const bootstrap = async (
             {
                 app,
                 port,
-                swaggerURI: routeConstants.routes.swaggerURI
+                swaggerURI: routes.swaggerURI
             }
         )
 
