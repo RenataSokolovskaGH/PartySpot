@@ -58,3 +58,26 @@ export interface RGetProfile {
     lastname: string;
     username: string;
 }
+
+export interface IEventfilter {
+    startTime: string;
+    endTime: string;
+}
+
+export interface IShowEvents {
+    filter: IEventfilter | null;
+    search: string;
+    status: string;
+}
+
+export interface RShowEvents {
+    events: IEventSchema[];
+}
+
+export interface IEventSchema {
+    eventId: number;
+    name: string;
+    startTime: string;
+    endTime: string;
+    status: string;
+}

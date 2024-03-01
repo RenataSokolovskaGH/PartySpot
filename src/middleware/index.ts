@@ -32,6 +32,19 @@ const checkAuthToken = async (
     next();
 }
 
+const showTheRoute = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+
+    console.log(`ova e rutata koja ja koristime momentalno: ${req.originalUrl}`);
+    next();
+}
+
+
 export {
-    checkAuthToken
+    checkAuthToken,
+    showTheRoute
+
 }

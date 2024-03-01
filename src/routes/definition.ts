@@ -29,7 +29,8 @@ const routes = {
     },
     home: {
         root: '/home/*',
-        getProfile: "/home/get-profile"
+        getProfile: "/home/get-profile",
+        showEvents: "/home/events/show-events"
     }
 };
 

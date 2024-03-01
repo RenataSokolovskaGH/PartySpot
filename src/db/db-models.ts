@@ -7,6 +7,10 @@ export const dbModels = {
     },
     userSessions: {
         tableName: 'user_sessions'
+    },
+    events: {
+        tableName: 'events'
     }
+
 }
 

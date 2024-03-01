@@ -137,6 +137,51 @@
                }
             ]
          }
+      },
+      "/home/events/show-events": {
+         "post": {
+            "tags": [
+               "Home"
+            ],
+            "summary": "Show adequate events",
+            "operationId": "showEvents",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/ShowEventsRequest"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ShowEventsResponse"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Bad request",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/APIErrorResponse"
+                        }
+                     }
+                  }
+               }
+            },
+            "security": [
+               {
+                  "AUTH_TOKEN": []
+               }
+            ]
+         }
       }
    },
    "components": {
@@ -227,6 +272,72 @@
                "username": {
                   "type": "string",
                   "example": "teonamaksimovska"
+               }
+            }
+         },
+         "ShowEventsRequest": {
+            "type": "object",
+            "properties": {
+               "search": {
+                  "type": "string",
+                  "example": "petok"
+               },
+               "status": {
+                  "type": "string",
+                  "example": "active"
+               },
+               "filter": {
+                  "$ref": "#/components/schemas/EventFilter"
+               }
+            }
+         },
+         "EventFilter": {
+            "type": "object",
+            "properties": {
+               "startTime": {
+                  "type": "string",
+                  "example": "2024-02-21T12:17:10.255Z"
+               },
+               "endTime": {
+                  "type": "string",
+                  "example": "2024-02-23T12:17:10.255Z"
+               }
+            }
+         },
+         "ShowEventsResponse": {
+            "type": "object",
+            "properties": {
+               "events": {
+                  "type": "array",
+                  "items": {
+                     "$ref": "#/components/schemas/EventSchema"
+                  }
+               }
+            }
+         },
+         "EventSchema": {
+            "type": "object",
+            "properties": {
+               "eventId": {
+                  "type": "number",
+                  "format": "integer",
+                  "example": 4
+               },
+               "name": {
+                  "type": "string",
+                  "example": "petok"
+               },
+               "startTime": {
+                  "type": "string",
+                  "example": "2024-02-21T12:17:10.255Z"
+               },
+               "endTime": {
+                  "type": "string",
+                  "example": "2024-02-23T12:17:10.255Z"
+               },
+               "status": {
+                  "type": "string",
+                  "example": "active"
                }
             }
          }
